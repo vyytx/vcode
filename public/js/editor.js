@@ -10,37 +10,19 @@ require(['vs/editor/editor.main'], function () {
 	monaco.languages.register({ id: 'Vcode' });
 
 	var dcode = `fib = func(n) {
-	if (n <= 2) {
-		ret 1;
-	} else {
-		ret (fib(n - 1) + fib(n - 2));
-	}
-};
-k = 10;
-out("fib(", k, ")\\n");
-time(func() { out(fib(k), "\\n"); });
-
-abs = func(k) {
-	if(k >= 0) {
-		ret k;
-	}else {
-		ret 0-k;
-	}
-};
-s = 1;
-n = 1;
-t = 1;
-pi = 0;
-time(func(){
-	while(abs(t) > 0.000001){
-		pi = pi + t;
-		n = n + 2;
-		s = 0-s;
-		t = s/n;
+		if (n <= 2) {
+			ret 1;
+		} else {
+			ret (fib(n - 1) + fib(n - 2));
+		}
 	};
-	pi = pi*4;
-	out("pi: ",pi, "\n");
-});
+	i = 1;
+	
+	while(i <= 10) {
+		out("fib(", i, ")\n");
+		time(func() { out(fib(i), "\n"); });
+		i = i+1;
+	}
 `;
 
 	// Register a tokens provider for the language
