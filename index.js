@@ -3,7 +3,7 @@ var app = express();
 const ngrok = require('ngrok');
 
 app.use(express.static('public'));
-app.use(express.static('node_modules/monaco-editor/dev'));
+app.use(express.static('monaco-editor/dev'));
 
 app.get("/" ,function(req, res){
     // if(req.params.id != ""){
