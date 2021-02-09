@@ -25,9 +25,15 @@ function OUTPLAY() {
 		});
 		Log.apply(null, arguments);
 		text = args.join("").split("\n");
+		var first = true;
 		for(var i of text) {
+			if(first) {
+				first = false;
+				if(i == "")
+					continue;
+			}
 			if($(".out").last().hasClass("end") || !$(".out").length) {
-				$("#outplay").append(`<div class="out">${i}</div>`);
+				$("#outplay").append(`<div class="out ${(i == "") ? "end": ""}">${(i == "") ? " " : i}</div>`);
 			}else if(i == "") {
 				$(".out").last().addClass("end");
 			}else {
