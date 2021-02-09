@@ -45,7 +45,7 @@ function OUTPLAY() {
 		var ast = parse(TokenStream(InputStream(code)));
 		Log("ast", ast);
 		Execute(evaluate, [ ast, globalEnv, function(result){
-			console.log("*** Result: ", result);
+			console.log("***Global last value: ", result);
 		}]);
 	});
 	// new_container.appendChild(outplay);

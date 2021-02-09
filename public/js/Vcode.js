@@ -120,11 +120,7 @@ function TokenStream(input) {
         var ch = input.peek();
         if (ch == "#") {
             input.next();
-            if(input.peek() == "#"){
-                read_while(function(ch){ return ch != "#" });
-            }else {
-                read_while(function(ch){ return ch != "\n" });
-            }
+            read_while(function(ch){ return ch != "\n" });
             input.next();
             return read_next();
         }
@@ -616,7 +612,10 @@ function apply_operation(op, a, b) {
     }
   
     switch (op) {
-      case "+": return NP.plus(num(a), num(b));
+      case "+": 
+        if(typeof a == "string") {
+            return a + b;
+        }else return NP.plus(num(a), num(b));
       case "-": return NP.minus(num(a), num(b));
       case "*": return NP.times(num(a), num(b));
       case "/": return NP.divide(num(a), num(b));
@@ -713,10 +712,25 @@ globalEnv.def("in", function(k, Ques, format) {
     switch(format) {
         case "number" :
             a = parseFloat(a);
+            k(a);
+            break;
+        case "boolean": 
+            a = (a) ? true: false;
+            k(a);
+            break;
         default: 
             k(a);
     }
 });
+
+globalEnv.def("toNumber", function(k, x) {
+    k(parseFloat(x));
+});
+
+globalEnv.def("toString", function(k, x) {
+    k(String(x));
+});
+
 globalEnv.def("fibJS", function(k, n){
     ret = (function fibJS(N) {
         if (N <= 2) return (1);

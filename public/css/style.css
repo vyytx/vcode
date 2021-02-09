@@ -78,7 +78,7 @@ body {
     font-size: 30px;
     word-wrap: break-word;
     margin-bottom: 20px;
-    z-index: 10s;
+    z-index: 10;
 }
 
 #outplay > #runCode {
@@ -120,4 +120,14 @@ body {
     top: 50%;
     transform: translate(0%, -50%);
     width: fit-content;
+}
+
+.loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index:-1;
+    font-size: 100px;
+    margin: 0;
+    transform: translate(-50%, -50%);
 }
