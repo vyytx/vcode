@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-const ngrok = require('ngrok');
 
 app.use(express.static('public'));
 
@@ -13,9 +12,4 @@ app.get("/" ,function(req, res){
 
 app.listen(3000, function(){
     console.log("runs at *:3000");
-    (async function() {
-        const url = await ngrok.connect(3000);
-        const apiUrl = ngrok.getUrl();
-        console.log("runs at: " + apiUrl + ", " + url);
-	})();
 });
