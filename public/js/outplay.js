@@ -4,7 +4,7 @@ function OUTPLAY() {
 		new_container.id = "containerOutplay";
 		new_container.className = "container";
 	document.getElementById("root").appendChild(new_container);
-	$("#containerOutplay").append(`<div id="outplay"><div id="topbar"><div id="spoiler">Console</div></div><div id="runCode"><span>🡺</span></div></div>`);
+	$("#containerOutplay").append(`<div id="outplay"><div id="topbar"><div id="spoiler">Output</div></div><div id="runCode"><span>🡺</span></div></div>`);
 
 	Log = console.log;
 	console.log = function() {

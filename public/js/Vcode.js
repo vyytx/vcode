@@ -646,7 +646,7 @@ function Continuation(f, args) {
 }
 function Execute(f, args) {
     while (true) try {
-        STACKLEN = 50;
+        STACKLEN = 200;
         return f.apply(null, args);
     } catch(ex) {
         if (ex instanceof Continuation)

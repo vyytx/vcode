@@ -162,13 +162,11 @@ while(k <= a) {
 	
 			whitespace: [
 				[/[ \t\r\n]+/, ''],
-				[/\#\#/, 'comment', '@comment'],
 				[/\#.*$/, 'comment'],
 			],
 	
 			comment: [
 				[/[^\#]+/, 'comment'],
-				[/\#\#/, 'comment', '@pop'],
 				[/[\#*]/, 'comment']
 			],
 	

@@ -24,11 +24,11 @@ var NP = (function (exports) {
 	}
 	
 	/**
-	 * @desc 解决浮动运算问题，避免小数点后产生多位数和计算精度损失。
-	 * 问题示例：2.3 + 2.4 = 4.699999999999999，1.0 - 0.9 = 0.09999999999999998
+	 * @desc 解決浮動運算問題，避免小數點後產生多位數和計算精度損失。
+	 * 問題示例：2.3 + 2.4 = 4.699999999999999，1.0 - 0.9 = 0.09999999999999998
 	 */
 	/**
-	 * 把错误的数据转正
+	 * 把錯誤的數據轉正
 	 * strip(0.09999999999999998)=0.1
 	 */
 	function strip(num, precision) {
@@ -46,7 +46,7 @@ var NP = (function (exports) {
 		return len > 0 ? len : 0;
 	}
 	/**
-	 * 把小数转成整数，支持科学计数法。如果是小数则放大成整数
+	 * 把小數轉換成整數，支援科學記號表示法。如果是小數則放大成整數
 	 * @param {*number} num 输入数
 	 */
 	function float2Fixed(num) {
@@ -57,8 +57,8 @@ var NP = (function (exports) {
 		return dLen > 0 ? strip(Number(num) * Math.pow(10, dLen)) : Number(num);
 	}
 	/**
-	 * 检测数字是否越界，如果越界给出提示
-	 * @param {*number} num 输入数
+	 * 檢測數字是否超越邊界，若超越將給予提示
+	 * @param {*number} num 輸入數
 	 */
 	function checkBoundary(num) {
 		if (_boundaryCheckingState) {
@@ -68,7 +68,7 @@ var NP = (function (exports) {
 		}
 	}
 	/**
-	 * 精确乘法
+	 * 精確乘法
 	 */
 	function times(num1, num2) {
 		var others = [];
@@ -86,7 +86,7 @@ var NP = (function (exports) {
 		return leftValue / Math.pow(10, baseNum);
 	}
 	/**
-	 * 精确加法
+	 * 精確加法
 	 */
 	function plus(num1, num2) {
 		var others = [];
@@ -100,7 +100,7 @@ var NP = (function (exports) {
 		return (times(num1, baseNum) + times(num2, baseNum)) / baseNum;
 	}
 	/**
-	 * 精确减法
+	 * 精確減法
 	 */
 	function minus(num1, num2) {
 		var others = [];
@@ -114,12 +114,11 @@ var NP = (function (exports) {
 		return (times(num1, baseNum) - times(num2, baseNum)) / baseNum;
 	}
 	/**
-	 * 精确除法
+	 * 精確除法
 	 */
 	function divide(num1, num2) {
-		// vyytx add L121
-		if(num2 == 0) 
-			throw new Error("Divide by zero");
+		// vyytx add Line 121
+		if(num2 == 0) throw new Error("Divide by zero");
 		var others = [];
 		for (var _i = 2; _i < arguments.length; _i++) {
 			others[_i - 2] = arguments[_i];
@@ -131,11 +130,11 @@ var NP = (function (exports) {
 		var num2Changed = float2Fixed(num2);
 		checkBoundary(num1Changed);
 		checkBoundary(num2Changed);
-		// fix: 类似 10 ** -4 为 0.00009999999999999999，strip 修正
+		// fix: 類似 10 ** -4 为 0.00009999999999999999，strip 修正
 		return times(num1Changed / num2Changed, strip(Math.pow(10, digitLength(num2) - digitLength(num1))));
 	}
 	/**
-	 * 四舍五入
+	 * 四捨五入
 	 */
 	function round(num, ratio) {
 		var base = Math.pow(10, ratio);
@@ -143,8 +142,8 @@ var NP = (function (exports) {
 	}
 	var _boundaryCheckingState = true;
 	/**
-	 * 是否进行边界检查，默认开启
-	 * @param flag 标记开关，true 为开启，false 为关闭，默认为 true
+	 * 是否進行邊界檢查，預設開啟
+	 * @param flag 開關標記，true 為開啟，false 為關閉，預設為 true
 	 */
 	function enableBoundaryChecking(flag) {
 		if (flag === void 0) { flag = true; }
