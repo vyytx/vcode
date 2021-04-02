@@ -12,34 +12,28 @@ require(['vs/editor/editor.main'], function () {
 	var defaultCode = 
 `#這是單行註解
 #這個範例程式是為了解釋「vcode」的功能
-
 #------------
 #　基本功能
 #------------
-
 #輸出"hello, world\\n"的字串
-out("hello, world!\\n");
-
+out("hello, world\\n");
 #利用javascript原生的prompt輸出含有'請輸入你的暱稱'字串的提問對話視窗
 nickname = in('請輸入你的暱稱');
 #輸出「nickname」所代表的字串
 out("Hello, ", nickname, "!\\n");
-
 #若您輸入的「nickname」為"John"，執行第16行，非"John"，執行第18行
 if(nickname == "John") {
-	out("You are John.\\n");
+	out("Hello, John.\\n");
 }else {
-	out("You are not John, but it is nice to meet you.\\n");
+	out("You are not John. Nice to meet you.\\n");
 };
-
 #將「i」定義為數字0
 i = 0;
-#當「i<10」此條件成立時重複執行25~26行，因此將會逐行輸出數字0~9
+#當「i<10」此條件成立時重複執行22~23行，因此將會逐行輸出數字0~9
 while(i < 10) {
 	out(i, "\\n");
 	i = i + 1;
 };
-
 #將「abs」定義為一函式，並設有一項參數「n」
 abs = func(n) {			#此函式將以會回傳「n」絕對值
 	#此為 if 的單行寫法，while 也有相同的功能
@@ -53,7 +47,6 @@ if(abs(0-10) == abs(10)) {
 }else {
 	out(false, "\\n");
 };
-
 #將執行time的第一個參數(type == function)，並將執行時間輸出
 str = "";
 j = 0;
@@ -64,22 +57,18 @@ time(func() {
 		j = j + 1;
 	};
 });
-
 #將輸入轉換成字串
 out(toString(1 + 2), "\\n");
 #將輸入轉換成數字
 out(toNumber("1") + toNumber("2"), "\\n");
-
 #用來區隔
 out("\\n\\n\\n\\n");
-
 #------------
 #　複合功能
 #------------
-
-# 將"fib"定義為一函式，並設有一項參數「n」 (第66~73行)
+# 將"fib"定義為一函式，並設有一項參數「n」 (第58~65行)
 fib = func(n) {		#此函式將以遞回的方式計算費式數列的第「n」項
-	#判斷參數「n」是否小於等於2，若是，進入第8行，若否，進入第10行
+	#判斷參數「n」是否小於等於2，若是，進入第61行，若否，進入第63行
 	if (n <= 2) {	
 		ret 1;
 	} else {
@@ -94,9 +83,7 @@ while(k <= a) {
 	time(func() { out(fib(k, "\\n\\n")) });
 	k = k + 1;
 };
-
-"Thanks for reading~";
-`;
+"感謝閱讀，這行並不會被執行";`;
 
 	// Register a tokens provider for the language
 	monaco.languages.setMonarchTokensProvider('Vcode', {
