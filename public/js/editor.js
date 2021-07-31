@@ -11,7 +11,7 @@ require(['vs/editor/editor.main'], function () {
 
 	var defaultCode = 
 `#這是單行註解
-#這個範例程式是為了解釋「vcode」的功能
+#這個範例程式是為了解釋「script-v」的功能
 #------------
 #　基本功能
 #------------
